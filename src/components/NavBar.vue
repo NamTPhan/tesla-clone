@@ -1,10 +1,8 @@
 <template>
   <div class="fixed w-full bg-transparent navbar-container">
-    <div class="mx-auto px-6">
-      <div
-        class="flex items-center justify-between py-2 md:justify-start md:space-x-10"
-      >
-        <div class="flex justify-start lg:w-0 lg:flex-1 pl-8">
+    <div class="mx-auto">
+      <div class="flex justify-between md:justify-start items-center py-2">
+        <div class="flex lg:w-0 lg:flex-1 pl-8">
           <a href="#" aria-label="Tesla Logo">
             <img
               class="h-3 w-auto"
@@ -13,81 +11,64 @@
             />
           </a>
         </div>
-        <div class="-my-2 -mr-2 md:hidden">
+        <div class="md:hidden">
           <button
+            class="hamburger-menu-btn"
             type="button"
-            class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
             aria-expanded="false"
+            @click="toggleMenu"
           >
             <span class="sr-only">Open menu</span>
-            <!-- Hamburger menu -->
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+            Menu
           </button>
         </div>
-        <nav class="hidden space-x-10 md:flex">
+        <nav class="hidden space-x-3 md:flex">
           <a
             v-for="route of linksCenter"
             :key="route.label"
             target="_blank"
             :href="route.link"
-            class="text-sm font-medium"
+            class="navbar-link"
             >{{ route.label }}</a
           >
         </nav>
         <div
-          class="hidden items-center pr-8 justify-end md:flex md:flex-1 lg:w-0 md:space-x-8"
+          class="hidden items-center pr-8 justify-end md:flex md:flex-1 lg:w-0"
         >
-          <a
-            href="https://shop.tesla.com/"
-            target="_blank"
-            class="whitespace-nowrap text-base font-medium"
+          <a href="https://shop.tesla.com/" target="_blank" class="navbar-link"
             >Shop</a
           >
           <a
             href="https://www.tesla.com/teslaaccount"
             target="_blank"
-            class="whitespace-nowrap text-base font-medium"
+            class="navbar-link"
             >Account</a
           >
-          <a
-            href="#"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md bg-transparent px-4 py-2 text-base font-medium shadow-sm hover:bg-black-100"
-            >Menu</a
-          >
+          <span class="navbar-link" @click="toggleMenu">Menu</span>
         </div>
       </div>
     </div>
-
-    <!--
-    Mobile menu, show/hide based on mobile menu state.
-
-    Entering: "duration-200 ease-out"
-      From: "opacity-0 scale-95"
-      To: "opacity-100 scale-100"
-    Leaving: "duration-100 ease-in"
-      From: "opacity-100 scale-100"
-      To: "opacity-0 scale-95"
-  -->
-    <div
-      class="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
-    >
-      <div>test</div>
-    </div>
   </div>
+
+  <div
+    :class="
+      isMenuOpen
+        ? 'w-full min-h-screen fixed z-40 bg-black/30 backdrop-blur-[3px]'
+        : ''
+    "
+    @click="toggleMenu"
+  />
+  <aside
+    class="transform top-0 right-0 w-80 bg-white fixed h-full overflow-auto transition-all z-50"
+    :class="isMenuOpen ? 'translate-x-0' : '-right-full'"
+  >
+    <ol>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ol>
+  </aside>
 </template>
 
 <script>
@@ -95,6 +76,7 @@ export default {
   name: "NavBar",
   data() {
     return {
+      isMenuOpen: false,
       linksCenter: [
         {
           label: "Model S",
@@ -123,11 +105,26 @@ export default {
       ],
     };
   },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .navbar-container {
   color: #171a20;
+}
+
+.navbar-link {
+  @apply text-base font-medium px-4 py-1 border border-transparent cursor-pointer;
+  @apply hover:bg-slate-400/30 hover:border-slate-400/30 hover:border-solid hover:rounded-md;
+}
+
+.hamburger-menu-btn {
+  @apply inline-flex items-center justify-center w-20 rounded-md p-0.5 m-2.5;
+  @apply bg-slate-400/30 border border-transparent border-slate-400/30 focus:outline-none;
 }
 </style>

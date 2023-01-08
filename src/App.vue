@@ -15,12 +15,16 @@ export default defineComponent({
     ProductSection,
     NavBar,
   },
+  data() {
+    return {};
+  },
+  methods: {},
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
