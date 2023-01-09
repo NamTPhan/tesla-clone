@@ -2,9 +2,14 @@
   <div class="justify-center flex items-center">
     <div class="justify-center">
       <img
-        class="object-cover h-screen w-min"
+        class="object-cover h-screen w-min hidden md:block"
         :alt="sectionBgImage"
-        :src="getImgUrl(sectionBgImage)"
+        :src="getDesktopImgUrl(sectionBgImage)"
+      />
+      <img
+        class="object-cover h-screen w-min block md:hidden"
+        :alt="sectionBgImage"
+        :src="getMobileImgUrl(sectionBgImage)"
       />
     </div>
   </div>
@@ -22,8 +27,11 @@ export default defineComponent({
     },
   },
   methods: {
-    getImgUrl(imgName) {
+    getDesktopImgUrl(imgName) {
       return require("@/assets/" + imgName);
+    },
+    getMobileImgUrl(imgName) {
+      return require("@/assets/mobile/" + imgName);
     },
   },
 });
