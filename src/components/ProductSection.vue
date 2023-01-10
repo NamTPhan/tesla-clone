@@ -1,16 +1,13 @@
 <template>
-  <div class="justify-center flex items-center">
-    <div class="justify-center">
-      <img
-        class="object-cover h-screen w-min hidden md:block"
-        :alt="sectionBgImage"
-        :src="getDesktopImgUrl(sectionBgImage)"
-      />
-      <img
-        class="object-cover h-screen w-min block md:hidden"
-        :alt="sectionBgImage"
-        :src="getMobileImgUrl(sectionBgImage)"
-      />
+  <div class="overflow-x-hidden">
+    <!-- https://tailwindcss.com/docs/content-configuration#dynamic-class-names -->
+    <div
+      :class="`${mobileBgImage} ${desktopBgImage}`"
+      class="bg-cover bg-no-repeat bg-center h-screen w-screen justify-center flex items-center"
+    >
+      <div class="title-container">
+        <h1>test</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -21,20 +18,19 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "ProductSection",
   props: {
-    sectionBgImage: {
+    desktopBgImage: {
       type: String,
       default: null,
     },
-  },
-  methods: {
-    getDesktopImgUrl(imgName) {
-      return require("@/assets/" + imgName);
-    },
-    getMobileImgUrl(imgName) {
-      return require("@/assets/mobile/" + imgName);
+    mobileBgImage: {
+      type: String,
+      default: null,
     },
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.title-container {
+}
+</style>

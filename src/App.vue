@@ -1,7 +1,33 @@
 <template>
   <NavBar />
-  <ProductSection section-bg-image="ModelY.jpg" />
-  <ProductSection section-bg-image="Model3.jpg" />
+  <ProductSection
+    desktop-bg-image="md:bg-model-y"
+    mobile-bg-image="bg-mb-model-y"
+  />
+  <ProductSection
+    desktop-bg-image="md:bg-model-3"
+    mobile-bg-image="bg-mb-model-3"
+  />
+  <ProductSection
+    desktop-bg-image="md:bg-model-s"
+    mobile-bg-image="bg-mb-model-s"
+  />
+  <ProductSection
+    desktop-bg-image="md:bg-model-x"
+    mobile-bg-image="bg-mb-model-x"
+  />
+  <ProductSection
+    desktop-bg-image="md:bg-solar-panel"
+    mobile-bg-image="bg-mb-solar-panel"
+  />
+  <ProductSection
+    desktop-bg-image="md:bg-solar-roof"
+    mobile-bg-image="bg-mb-solar-roof"
+  />
+  <ProductSection
+    desktop-bg-image="md:bg-charger"
+    mobile-bg-image="bg-mb-charger"
+  />
 </template>
 
 <script lang="ts">
