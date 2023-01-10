@@ -3,10 +3,18 @@
     <!-- https://tailwindcss.com/docs/content-configuration#dynamic-class-names -->
     <div
       :class="`${mobileBgImage} ${desktopBgImage}`"
-      class="bg-cover bg-no-repeat bg-center h-screen w-screen justify-center flex items-center"
+      class="bg-cover bg-no-repeat bg-center h-screen w-screen justify-center flex"
     >
       <div class="title-container">
-        <h1>test</h1>
+        <p class="text-[40px] md:text-[44px]">{{ title }}</p>
+        <a
+          v-if="subtitleLink && isSubtitleALink"
+          class="underline"
+          :href="subtitleLink"
+          target="_blank"
+          >{{ subtitle }}</a
+        >
+        <p v-if="!isSubtitleALink">{{ subtitle }}</p>
       </div>
     </div>
   </div>
@@ -21,10 +29,29 @@ export default defineComponent({
     desktopBgImage: {
       type: String,
       default: null,
+      required: true,
     },
     mobileBgImage: {
       type: String,
       default: null,
+      required: true,
+    },
+    title: {
+      type: String,
+      default: null,
+      required: true,
+    },
+    subtitle: {
+      type: String,
+      default: "Schedule a Demo Drive",
+    },
+    subtitleLink: {
+      type: String,
+      default: "https://www.tesla.com/drive",
+    },
+    isSubtitleALink: {
+      type: Boolean,
+      default: true,
     },
   },
 });
@@ -32,5 +59,6 @@ export default defineComponent({
 
 <style scoped>
 .title-container {
+  @apply mt-[180px] md:mt-[200px];
 }
 </style>
