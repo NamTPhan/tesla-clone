@@ -1,6 +1,5 @@
 <template>
   <div class="overflow-x-hidden">
-    <!-- https://tailwindcss.com/docs/content-configuration#dynamic-class-names -->
     <div
       :class="`${mobileBgImage} ${desktopBgImage}`"
       class="bg-cover bg-no-repeat bg-center h-screen w-screen justify-center flex"
