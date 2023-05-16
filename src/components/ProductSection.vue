@@ -95,7 +95,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .primary-action-btn {
   background-color: rgba(23, 26, 32, 0.8);
   @apply py-1 px-6 text-white leading-loose min-w-[264px] min-h-[40px] rounded-[5px];

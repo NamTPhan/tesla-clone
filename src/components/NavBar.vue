@@ -262,6 +262,6 @@ export default {
 
 .menu-btn {
   @apply inline-flex items-center justify-center w-20 rounded-md p-0.5 m-2.5;
-  @apply bg-slate-400/30 border border-transparent border-slate-400/30 focus:outline-none;
+  @apply bg-slate-400/30 border border-slate-400/30 focus:outline-none;
 }
 </style>

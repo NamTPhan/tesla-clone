@@ -11,7 +11,6 @@
     :sub-btn-link="product.subBtnLink"
     :title="product.title"
     :subtitle="product.subtitle"
-    :subtitle-link="product.subtitleLink"
     :is-subtitle-a-link="product.isSubtitleALink"
   />
   <Footer />
@@ -105,7 +104,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Arial, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
